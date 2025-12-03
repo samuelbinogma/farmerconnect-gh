@@ -97,10 +97,37 @@ function Signup() {
                         />
                         <span className="text-lg">Buyer (I want to buy produce)</span>
                     </label>
+
+                    <label className="flex items-center space-x-3">
+                        <input type="radio"
+                                name="role"
+                                value="farmer"
+                                checked={role === 'farmer'}
+                                onChange={(e) => setRole(e.target.value)}
+                                className="w-5 h-5 text-green-600"
+                        />
+                        <span className="text-lg">Farmer (I want to sell produce)</span>
+                    </label>
                 </div>
 
-                
+                {error && <p className="text-red-600 text-center">{error}</p>}
+
+                <button type="submit"
+                        disabled={loading}
+                        className="w-full bg-green-700 hover:bg-green-800 
+                        disabled:bg-gray-400 text-white font-bold py-4 
+                        rounded-lg text-xl transition"
+                >
+                    {loading ? 'Creating Account...' : 'Sign Up'}
+                </button>
             </form>
+
+            <p className="text-center mt-6 text-gray-600">
+                Already have an account?{' '}
+                <Link to="/login" className="text-green-700 font-bold hover:underline">
+                    Login here
+                </Link>
+            </p>
         </div>
     )
 }
